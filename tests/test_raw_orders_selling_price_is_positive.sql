@@ -1,12 +1,6 @@
-with
-orders as 
-(
-select * from {{ ref('raw_orders') }} 
-)
+with orders as (select * from {{ ref("raw_orders") }})
 
-select 
-orderid, 
-sum(ordersellingprice2) as total_sp 
+select orderid, sum(ordersellingprice2) as total_sp
 from orders
 group by orderid
-having total_sp<0
+having total_sp < 0
