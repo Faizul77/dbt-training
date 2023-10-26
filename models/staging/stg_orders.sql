@@ -16,7 +16,9 @@ country,
 category,
 productname,
 subcategory,
-ordersellingprice2 - ordercostprice as orderprofit from {{ ref('raw_orders') }} as o
+ordersellingprice2 - ordercostprice as orderprofit 
+{{markup('ordersellingprice2','ordercostprice')}} as markup
+from {{ ref('raw_orders') }} as o
 left join {{ ref('raw_customer') }} as c
 on o.customerid = c.customerid
 left join {{ ref('raw_product') }} as p
